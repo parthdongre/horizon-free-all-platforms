@@ -2826,7 +2826,7 @@ impl Launcher {
             "horizon-free",
             "Horizon-Free",
             "globe",
-            "https://github.com/0CYBER/horizon-free".to_string(),
+            format!("https://github.com/{}", backend::LAUNCHER_REPO),
         ));
         if !self.links.sponsor.is_empty() {
             foot = foot.child(link(

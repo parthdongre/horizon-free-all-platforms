@@ -1,8 +1,9 @@
 # Horizon Free on macOS
 
-This checkout is `0CYBER/horizon-free` at
-`5e3a83d63b647af0a7114e0bc0732d66089dc959` (launcher 0.2.12).
-The macOS build uses the fork's existing launcher and packaging scripts.
+This distribution is maintained in `parthdongre/horizon-free-all-platforms`
+(launcher 0.2.13), based on `0CYBER/horizon-free` at
+`5e3a83d63b647af0a7114e0bc0732d66089dc959`. See [CREDITS.md](CREDITS.md)
+for the original Windows/Linux creator and upstream authors.
 
 ## Build for Apple Silicon
 
@@ -15,7 +16,7 @@ cargo +1.99.1 build --manifest-path launcher/Cargo.toml --release --locked \
 python3 -m venv .venv
 .venv/bin/python -m pip install dmgbuild==1.6.5
 DMGBUILD="$PWD/.venv/bin/dmgbuild" packaging/macos/package.sh \
-  launcher/target/release/horizon-launcher 0.2.12 dist arm64
+  launcher/target/release/horizon-launcher 0.2.13 dist arm64
 ```
 
 The macOS UI dependency needs a newer Rust compiler than the repository's
