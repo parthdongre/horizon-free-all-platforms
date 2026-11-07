@@ -1,8 +1,10 @@
-# Horizon Free — All Platforms
+# Horizon Free — All Platforms (TLauncher Compatible)
 
 An independent distribution of Horizon Free maintained by
-[parthdongre](https://github.com/parthdongre), with a native **macOS Apple Silicon
-launcher** and links to the original Windows and Linux builds.
+[parthdongre](https://github.com/parthdongre). The launcher can prepare Horizon
+using an existing TLauncher Minecraft installation, including a matching
+`Fabric 26.3` profile. The project publishes a native macOS Apple Silicon
+launcher and links to the original Windows and Linux builds.
 
 **Credit to [0CYBER](https://github.com/0CYBER): creator of the original
 [Horizon Free repository](https://github.com/0CYBER/horizon-free) and its
@@ -14,11 +16,11 @@ The Horizon game and original launcher were created by
 
 | Platform | Download | Build creator |
 | --- | --- | --- |
-| macOS Apple Silicon (M1 and newer) | [DMG installer](https://github.com/parthdongre/horizon-free-all-platforms/releases/latest/download/horizon-launcher-macos-arm64.dmg) · [ZIP](https://github.com/parthdongre/horizon-free-all-platforms/releases/latest/download/horizon-launcher-macos-arm64.zip) | parthdongre, based on Horizon Free |
+| macOS Apple Silicon (M1 and newer) | [DMG installer](https://github.com/parthdongre/horizon-free-all-platforms/releases/download/launcher%400.2.13/horizon-launcher-macos-arm64.dmg) · [ZIP](https://github.com/parthdongre/horizon-free-all-platforms/releases/download/launcher%400.2.13/horizon-launcher-macos-arm64.zip) | parthdongre, based on Horizon Free |
 | Windows x64 | [0CYBER's releases](https://github.com/0CYBER/horizon-free/releases/latest) | 0CYBER |
 | Linux x86-64 | [0CYBER's releases](https://github.com/0CYBER/horizon-free/releases/latest) | 0CYBER |
 
-[Release notes and checksums](https://github.com/parthdongre/horizon-free-all-platforms/releases/latest)
+[Releases and checksums](https://github.com/parthdongre/horizon-free-all-platforms/releases)
 
 This repository currently publishes macOS Apple Silicon binaries. Windows and
 Linux downloads above are the original packages published by 0CYBER. An Intel
