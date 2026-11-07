@@ -24,6 +24,31 @@ This repository currently publishes macOS Apple Silicon binaries. Windows and
 Linux downloads above are the original packages published by 0CYBER. An Intel
 macOS binary has not been built or tested for this distribution.
 
+## Use TLauncher on Windows
+
+1. In TLauncher, launch the Minecraft version required by your Horizon build
+   once to download its files. Then use TLauncher's folder icon to locate the
+   game directory. The default is `%APPDATA%\.minecraft`.
+2. Open `horizon-launcher.exe`. If you use a custom game directory, select it
+   under **Settings → Minecraft folder** in Horizon.
+3. Install a Horizon game version, then prepare its resources and press **Play**.
+
+The source in this repository also recognizes a profile such as `Fabric 26.3`
+when its client jar matches the version Horizon requires. Build this checkout
+for that support. The original Windows packages linked above are separate builds.
+
+To build the Windows x64 launcher, install Visual Studio Build Tools with
+the **Desktop development with C++** workload and run this from the repository
+root in PowerShell:
+
+```powershell
+rustup toolchain install 1.99.1-x86_64-pc-windows-msvc --profile minimal
+$env:RUSTFLAGS = '-C target-feature=+crt-static'
+cargo +1.99.1-x86_64-pc-windows-msvc build --manifest-path launcher/Cargo.toml --release --locked --target x86_64-pc-windows-msvc
+```
+
+The executable is `launcher\target\x86_64-pc-windows-msvc\release\horizon-launcher.exe`.
+
 ## Install on macOS
 
 1. Download the DMG, open it, and drag **Horizon** into **Applications**.

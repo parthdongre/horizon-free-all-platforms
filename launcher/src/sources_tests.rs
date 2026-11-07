@@ -313,6 +313,48 @@ fn a_modrinth_loader_profile_has_the_client_jar() {
 }
 
 #[test]
+fn a_tlauncher_fabric_profile_prepares_from_the_matching_client() {
+    let s = Scratch::new("tlauncher-fabric");
+    let jar = "versions/Fabric 26.3/Fabric 26.3.jar";
+    let dir = s.launcher("AppData/Roaming/.minecraft", "", jar);
+    let profile = dir.join("versions/Fabric 26.3");
+    let profile_manifest = br#"{"id":"Fabric 26.3","inheritsFrom":"26.3"}"#;
+    s.write(
+        "AppData/Roaming/.minecraft/versions/Fabric 26.3/Fabric 26.3.json",
+        profile_manifest,
+    );
+    let linked = s.0.join("linked");
+    let mojang = Mojang::new(MANIFEST);
+    let known = known_folders(
+        Os::Windows,
+        &Folders {
+            home: s.0.clone(),
+            data: s.0.join("AppData/Roaming"),
+            config: s.0.join("AppData/Roaming"),
+        },
+    );
+    for chosen in [&s.0.join("missing"), &profile] {
+        assert_eq!(
+            resolve_with(chosen, &known, &linked, &mojang).unwrap(),
+            linked
+        );
+        assert_linked(&linked, &dir, jar);
+    }
+    assert_eq!(mojang.urls.lock().unwrap().len(), 1);
+    assert_eq!(
+        fs::read(profile.join("Fabric 26.3.json")).unwrap(),
+        profile_manifest
+    );
+
+    fs::write(dir.join(jar), b"modified client jar").unwrap();
+    let error = find(&dir, &pins()).unwrap_err();
+    assert!(
+        error.contains("is not the 26.3 release Horizon was made for"),
+        "{error}"
+    );
+}
+
+#[test]
 fn an_instance_folder_may_be_chosen() {
     let s = Scratch::new("instance");
     let jar = "libraries/com/mojang/minecraft/26.3/minecraft-26.3-client.jar";

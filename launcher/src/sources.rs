@@ -196,6 +196,8 @@ fn client_jars(base: &Path, version: &str) -> Vec<String> {
         format!("libraries/com/mojang/minecraft/{v}/minecraft-{v}-client.jar"),
         // ATLauncher and GDLauncher.
         format!("libraries/net/minecraft/client/{v}/client-{v}.jar"),
+        // TLauncher can keep the vanilla jar under a renamed Fabric profile.
+        format!("versions/Fabric {v}/Fabric {v}.jar"),
     ] {
         if !jars.contains(&jar) {
             jars.push(jar);
@@ -320,8 +322,8 @@ pub fn not_found(version: &str, checked: &[(PathBuf, String)], chosen: &Path) ->
              Choose… in the launcher, --minecraft on the command line)."
         ),
         None => format!(
-            "\n  • Play {version} once in the official Minecraft launcher, or in Prism Launcher, \
-             MultiMC, the Modrinth App, ATLauncher or GDLauncher, then prepare again.\n  \
+            "\n  • Play {version} once in the official Minecraft launcher, TLauncher, Prism \
+             Launcher, MultiMC, the Modrinth App, ATLauncher or GDLauncher, then prepare again.\n  \
              • Or choose the folder where your launcher keeps Minecraft {version} (Minecraft \
              folder › Choose… in the launcher, --minecraft on the command line)."
         ),

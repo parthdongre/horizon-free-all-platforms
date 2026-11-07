@@ -45,9 +45,9 @@ On macOS, the usual folder is:
 Use **Command-Shift-G** in the folder picker to enter that path. The standard
 layout contains `versions/26.3/26.3.jar`, `versions/26.3/26.3.json`, `libraries`,
 and `assets`. Horizon checks the version metadata and client jar against its
-pinned checksums. A renamed Fabric profile such as `Fabric 26.3` is not
-automatically recognized by this checkout; install the matching vanilla
-version or provide a local folder with the standard layout.
+pinned checksums. The current source also recognizes a renamed TLauncher
+profile such as `Fabric 26.3` when it contains the checksum-matched client jar.
+The published 0.2.13 build needs the standard layout.
 
 During verification, a checksum-matched `Fabric 26.3` jar was exposed through
 `.local/minecraft-source` using links to the existing installation and verified
